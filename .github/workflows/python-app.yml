@@ -15,6 +15,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Setup MySQL
+      uses: mirromutth/mysql-action@v1.1
+      with:
+        host port: 3800
+        container port: 3307
+        character set server: 'utf8'
+        collation server: 'utf8_general_ci'
+        mysql version: '8.0'
+        mysql database: 'test'
+        mysql user: 'dev'
+        mysql password: 'test123'
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
@@ -24,7 +35,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pymysql
+        pip install mysqlclient
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 #    - name: Run migrations
 #      run: python manage.py migrate
