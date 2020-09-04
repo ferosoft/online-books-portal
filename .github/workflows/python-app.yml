@@ -13,7 +13,14 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+            MYSQL_ALLOW_EMPTY_PASSWORD: yes
+            MYSQL_DATABASE: myapp
+        ports:
+            - 3306
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.8
