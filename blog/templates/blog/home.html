@@ -1,0 +1,23 @@
+{% extends "blog/layout.html" %}
+{% block page %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Online Book Listing Library</h1>
+    <p class="lead">You’re in the right place. Tell us what titles or genres you’ve enjoyed in the past, and we’ll give you surprisingly insightful recommendations.</p>
+  </div>
+</div>
+  <div class="container">
+      <div class="row">
+{% for item in post %}
+<div class="card col-3" >
+  <div class="card-body">
+    <h5 class="card-title">{{item.title}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{item.author}}</h6>
+    <p class="card-text">{{item.about}}</p>
+   <a href="#" class="btn btn-primary">Read More</a>
+  </div>
+</div>
+{% endfor %}
+          </div>
+  </div>
+{% endblock page %}
